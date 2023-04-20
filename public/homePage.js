@@ -38,7 +38,7 @@ moneyManager.addMoneyCallback = data => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Ваш счёт успешно пополнен!");
         } else {
-            moneyManager.setMessage(response.error, "Произошла ошибка!")
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }
@@ -49,7 +49,7 @@ moneyManager.conversionMoneyCallback = data => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Валюта успешно конвертирована!");
         } else {
-            moneyManager.setMessage(response.error, "Произошла ошибка!")
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }
@@ -60,7 +60,7 @@ moneyManager.sendMoneyCallback = data => {
             ProfileWidget.showProfile(response.data);
             moneyManager.setMessage(response.success, "Перевод средств выполнен успешно!");
         } else {
-            moneyManager.setMessage(response.error, "Произошла ошибка!")
+            moneyManager.setMessage(response.success, response.error);
         }
     });
 }
@@ -81,9 +81,9 @@ favoritesWidget.addUserCallback = data => {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage(response.success, "Пользователь успешно добавлен в адресную книгу!");
+            favoritesWidget.setMessage(response.success, "Пользователь успешно добавлен в адресную книгу!");
         } else {
-            moneyManager.setMessage(response.error, "Произошла ошибка!")
+            favoritesWidget.setMessage(response.success, response.error);
         }
     });
 }
@@ -94,9 +94,9 @@ favoritesWidget.removeUserCallback = data => {
             favoritesWidget.clearTable();
             favoritesWidget.fillTable(response.data);
             moneyManager.updateUsersList(response.data);
-            moneyManager.setMessage(response.success, "Пользователь был удалён из адресной книги!");
+            favoritesWidget.setMessage(response.success, "Пользователь был удалён из адресной книги!");
         } else {
-            moneyManager.setMessage(response.error, "Произошла ошибка!")
+            favoritesWidget.setMessage(response.success, response.error);
         }
     });
 }
